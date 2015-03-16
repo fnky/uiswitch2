@@ -1,0 +1,170 @@
+// UISwitch2
+// A customizable UISwitch in pure CSS3.
+//
+// @author Christian Petersen <chrs@cbp.io>
+
+// Bourbon Mixins
+@import 'mixins';
+
+$uiswitch-thumb-off-tint: #ABB2BF !default;
+$uiswitch-thumb-on-tint: #ffffff !default;
+$uiswitch-on-tint: #4A90E2 !default;
+$uiswitch-off-tint: #EDF1F5 !default;
+
+$uiswitch-size: 50px !default;
+$uiswitch-thumb-size: $uiswitch-size / 3 !default;
+$uiswitch-active-thumb-size: $uiswitch-size / 2.25 !default;
+$uiswitch-thumb-offset: ($uiswitch-thumb-size / 4) !default;
+$uiswitch-on-thumb-offset: $uiswitch-thumb-offset + $uiswitch-thumb-size !default;
+
+%uiswitch {
+  @include box-sizing(border-box);
+  @include appearance(none);
+  @include user-select(none);
+  @include size($uiswitch-size $uiswitch-size / 2);
+  position: relative;
+  border-radius: $uiswitch-size / 2;
+  cursor: pointer;
+  outline: 0;
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: $uiswitch-off-tint;
+  @include transition-duration(250ms);
+  @include transition-timing-function(ease-in-out);
+
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+  // Thumb
+  &::after {
+    @include box-sizing(border-box);
+    @include size($uiswitch-thumb-size);
+    content: ' ';
+    position: absolute;
+    border-radius: $uiswitch-active-thumb-size / 2;
+    background: $uiswitch-thumb-off-tint;
+    z-index: 2;
+    top: $uiswitch-thumb-offset;
+    left: $uiswitch-thumb-offset;
+    @include transition(transform 300ms, width 280ms, background-color 600ms);
+    @include transform(translate3d(0, 0, 0));
+    @include transition-timing-function(cubic-bezier(0.42, 0.800, 0.58, 1.2));
+  }
+
+  &:active {
+    background-color: $uiswitch-off-tint;
+  }
+
+  // Background tint for ON state
+  &:checked {
+    background-color: $uiswitch-on-tint;
+  }
+
+  // Thumb for ON state
+  &:checked::after {
+    @include transform(translate3d($uiswitch-on-thumb-offset, 0, 0));
+    right: $uiswitch-size / 2;
+    left: inherit;
+  }
+
+  &:focus {
+    box-shadow: 0 0 4px 2px transparentize($uiswitch-on-tint, 0.4);
+  }
+
+  // Thumb for active state
+  &:active::after {
+    width: $uiswitch-active-thumb-size;
+  }
+
+  &:checked::before,
+  &:active::before {
+    @include transform(scale(0));
+  }
+
+  // Disabled
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+    @include transition(none);
+
+    &:active::before,
+    &:active::after,
+    &:checked:active::before,
+    &:checked::before {
+      width: $uiswitch-thumb-size;
+      @include transition(none);
+    }
+  }
+}
+
+@mixin uiswitch(
+    $size: $uiswitch-size,
+    $thumb-size: $size / 3,
+    $active-thumb-size: $size / 2.25,
+    $thumb-offset: ($thumb-size / 4),
+    $on-thumb-offset: $thumb-offset + $thumb-size,
+
+    $on-tint: $uiswitch-on-tint,
+    $off-tint: $uiswitch-off-tint,
+    $thumb-off-tint: $uiswitch-thumb-off-tint,
+    $thumb-on-tint: $uiswitch-thumb-on-tint) {
+
+  @extend %uiswitch;
+  @include size($size $size / 2);
+  border-radius: $size / 2;
+  @deprecated $size;
+
+  background-color: $off-tint;
+
+  $on-tint-start: $on-tint;
+  $on-tint-end: desaturate($on-tint-start, 1);
+
+  &::before {
+    background-color: $off-tint;
+  }
+
+  &::after {
+    @include size($thumb-size);
+    border-radius: $active-thumb-size / 2;
+    top: $thumb-offset;
+    left: $thumb-offset;
+    background: $thumb-off-tint;
+  }
+
+  &:active {
+    background-color: $off-tint;
+  }
+
+  &:active::after {
+    width: $active-thumb-size;
+  }
+
+  &:checked {
+    background-color: $on-tint;
+  }
+
+  &:checked::after {
+    @include transform(translate3d($on-thumb-offset, 0, 0));
+    right: $size / 2;
+    background: $thumb-on-tint;
+  }
+
+  // Disabled
+  &:disabled {
+    &:active::before,
+    &:active::after,
+    &:checked:active::before,
+    &:checked::before {
+      width: $thumb-size;
+    }
+  }
+
+}
+
+// Make .uiswitch class available out of the box
+.uiswitch {
+  @include uiswitch();
+}

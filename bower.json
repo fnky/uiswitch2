@@ -1,0 +1,34 @@
+{
+  "name": "uiswitch2",
+  "version": "2.0.0",
+  "authors": [
+    "Christian Petersen (http://cbp.io) <chrs@cbp.io>"
+  ],
+  "description": "A customizable UISwitch in pure CSS3",
+  "main": "_uiswitch2.scss",
+  "keywords": [
+    "css3",
+    "scss",
+    "sass",
+    "switch",
+    "button",
+    "checkbox",
+    "ui",
+    "component"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/fnky/uiswitch2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    ".sass-cache",
+    ".DS_Store",
+    "test",
+    "tests",
+    ".gitignore",
+    "example.html",
+    "Makefile"
+  ],
+  "dependencies": {}
+}

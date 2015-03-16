@@ -1,0 +1,122 @@
+.uiswitch {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 25px;
+  width: 50px;
+  position: relative;
+  border-radius: 25px;
+  cursor: pointer;
+  outline: 0;
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: #EDF1F5;
+  -webkit-transition-duration: 250ms;
+  -moz-transition-duration: 250ms;
+  transition-duration: 250ms;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: transparent; }
+  .uiswitch::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 16.66667px;
+    width: 16.66667px;
+    content: ' ';
+    position: absolute;
+    border-radius: 11.11111px;
+    background: #ABB2BF;
+    z-index: 2;
+    top: 4.16667px;
+    left: 4.16667px;
+    -webkit-transition: -webkit-transform 300ms, width 280ms, background-color 600ms;
+    -moz-transition: -moz-transform 300ms, width 280ms, background-color 600ms;
+    transition: transform 300ms, width 280ms, background-color 600ms;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition-timing-function: cubic-bezier(0.42, 0.8, 0.58, 1.2);
+    -moz-transition-timing-function: cubic-bezier(0.42, 0.8, 0.58, 1.2);
+    transition-timing-function: cubic-bezier(0.42, 0.8, 0.58, 1.2); }
+  .uiswitch:active {
+    background-color: #EDF1F5; }
+  .uiswitch:checked {
+    background-color: #4A90E2; }
+  .uiswitch:checked::after {
+    -webkit-transform: translate3d(20.83333px, 0, 0);
+    -moz-transform: translate3d(20.83333px, 0, 0);
+    -ms-transform: translate3d(20.83333px, 0, 0);
+    -o-transform: translate3d(20.83333px, 0, 0);
+    transform: translate3d(20.83333px, 0, 0);
+    right: 25px;
+    left: inherit; }
+  .uiswitch:focus {
+    box-shadow: 0 0 4px 2px rgba(74, 144, 226, 0.6); }
+  .uiswitch:active::after {
+    width: 22.22222px; }
+  .uiswitch:checked::before, .uiswitch:active::before {
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0); }
+  .uiswitch:disabled {
+    opacity: 0.5;
+    cursor: default;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none; }
+    .uiswitch:disabled:active::before, .uiswitch:disabled:active::after, .uiswitch:disabled:checked:active::before, .uiswitch:disabled:checked::before {
+      width: 16.66667px;
+      -webkit-transition: none;
+      -moz-transition: none;
+      transition: none; }
+
+.uiswitch {
+  height: 25px;
+  width: 50px;
+  border-radius: 25px;
+  @deprecated $size;
+  background-color: #EDF1F5; }
+  .uiswitch::before {
+    background-color: #EDF1F5; }
+  .uiswitch::after {
+    height: 16.66667px;
+    width: 16.66667px;
+    border-radius: 11.11111px;
+    top: 4.16667px;
+    left: 4.16667px;
+    background: #ABB2BF; }
+  .uiswitch:active {
+    background-color: #EDF1F5; }
+  .uiswitch:active::after {
+    width: 22.22222px; }
+  .uiswitch:checked {
+    background-color: #4A90E2; }
+  .uiswitch:checked::after {
+    -webkit-transform: translate3d(20.83333px, 0, 0);
+    -moz-transform: translate3d(20.83333px, 0, 0);
+    -ms-transform: translate3d(20.83333px, 0, 0);
+    -o-transform: translate3d(20.83333px, 0, 0);
+    transform: translate3d(20.83333px, 0, 0);
+    right: 25px;
+    background: #ffffff; }
+  .uiswitch:disabled:active::before, .uiswitch:disabled:active::after, .uiswitch:disabled:checked:active::before, .uiswitch:disabled:checked::before {
+    width: 16.66667px; }
